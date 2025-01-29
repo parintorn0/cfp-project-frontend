@@ -2,6 +2,7 @@
     import Button from "$lib/Button.svelte";
     import Home from "$lib/Home.svelte";
     import TopLeftImage from "$lib/TopLeftImage.svelte";
+    import {goto} from "$app/navigation";
     let emailValue = $state();
     let passwordValue = $state();
 
@@ -32,18 +33,18 @@
                 console.error(err);
             })
         }).catch((err) => {
-            console.error(err);
+            alert("Unable to Login");
         })
     }
 
     function register(){
-        console.log(JSON.stringify({
+        console.log({
             "email": registerEmailValue,
             "password": registerPasswordValue,
             "name": registerFirstNameValue,
             "surname": registerLastNameValue,
             "telephone": registerPhoneValue,
-        }))
+        })
         fetch("http://localhost:5000/register", {
             method: "POST",
             headers: {'Content-Type': 'application/json'},
@@ -56,18 +57,20 @@
             })
         }).then((res) => {
             if(res.ok){
-                alert("Register successful!");
                 isLogin=true;
             }
+            res.json().then(data=>{
+                 alert(data.message);
+            });
         }).catch((err) => {
-            console.error(err);
+            alert("Unable to Register");
         })
     }
 </script>
 
 <div>
     <div class="layout">
-        <TopLeftImage/>
+        <TopLeftImage onClick={()=>{goto('/')}}/>
         <Home/>
         {#if isLogin}
             <div class="login-section">

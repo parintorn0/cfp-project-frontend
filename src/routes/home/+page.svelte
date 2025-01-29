@@ -3,6 +3,7 @@
     import Home from "$lib/Home.svelte";
     import {onMount} from "svelte";
     import Button from "$lib/Button.svelte";
+    import {goto} from "$app/navigation";
     let user_type = $state(null)
     onMount(()=>{
         user_type = localStorage.getItem("userType");
@@ -12,7 +13,7 @@
 <div>
     <div class="layout">
         {#if user_type==='C'}
-            <TopLeftImage/>
+            <TopLeftImage onClick={()=>{goto('/')}}/>
             <Home haveBtn/>
         {:else if user_type==='A'}
             <Home/>
