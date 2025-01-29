@@ -2,26 +2,21 @@
     import TopLeftImage from "$lib/TopLeftImage.svelte";
     import {onMount} from "svelte";
     import Navigator from "$lib/CFP/Navigator.svelte";
+    import Income from "$lib/CFP/Income.svelte";
     import { page } from "$app/state"
-    import { assets }  from '$lib/CFP/store.js'
 
     let userType = $state(null)
-    let userId = $state(null)
 
     onMount(()=>{
         userType = localStorage.getItem("userType")
-        userId = localStorage.getItem("userId");
-
     })
+
 </script>
-<div class="layout">
-    {#if userType === "F"}
-        <TopLeftImage />
-        <Navigator selectedIndex={1}/>
-    {:else}
-        Unauthorized
-    {/if}
-</div>
+
+<Navigator selectedIndex={2}/>
+<Income type="Salary"></Income>
+<Income type="Investment"></Income>
+<Income type="Other"></Income>
 
 <style>
     .layout {

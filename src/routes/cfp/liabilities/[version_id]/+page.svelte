@@ -1,16 +1,10 @@
 <script>
-    import TopLeftImage from "$lib/TopLeftImage.svelte";
     import Navigator from "$lib/CFP/Navigator.svelte";
-    import Asset from "$lib/CFP/Asset.svelte";
-    import { page } from "$app/state"
-
+    import Liability from "$lib/CFP/Liability.svelte";
 </script>
 
-<Navigator selectedIndex={0}/>
-<Asset type="Liquid"></Asset>
-<Asset type="Private"></Asset>
-<Asset type="Investment"></Asset>
-<Asset type="Other"></Asset>
+    <Navigator selectedIndex={1}/>
+    <Liability></Liability>
 
 <style>
     .layout {

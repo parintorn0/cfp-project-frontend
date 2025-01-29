@@ -1,16 +1,13 @@
 <script>
     import TopLeftImage from "$lib/TopLeftImage.svelte";
     import Navigator from "$lib/CFP/Navigator.svelte";
-    import Asset from "$lib/CFP/Asset.svelte";
     import { page } from "$app/state"
-
+    import Goal from "$lib/CFP/Goal.svelte";
 </script>
 
-<Navigator selectedIndex={0}/>
-<Asset type="Liquid"></Asset>
-<Asset type="Private"></Asset>
-<Asset type="Investment"></Asset>
-<Asset type="Other"></Asset>
+<TopLeftImage style="position: absolute" version={page.params.version_id}/>
+<Navigator selectedIndex={4}/>
+<Goal></Goal>
 
 <style>
     .layout {

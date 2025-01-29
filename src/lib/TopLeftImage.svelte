@@ -1,13 +1,15 @@
 <script>
     import {base} from "$app/paths";
-    const {style} = $props()
+    const {style, onClick} = $props()
 </script>
 
-<img src="{base}/Icon.png" style="{style}" alt="">
+<div on:click={onClick}>
+    <img src="{base}/Icon.png" style="{style}" alt="">
+</div>
 
 <style>
-    img{
-        position: fixed;
+    div{
+        position: absolute;
         top: 50px;
         left: 50px;
     }
