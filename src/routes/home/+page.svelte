@@ -7,6 +7,9 @@
     let user_type = $state(null)
     onMount(()=>{
         user_type = localStorage.getItem("userType");
+        if(!user_type){
+            goto("/");
+        }
     })
 </script>
 
@@ -47,7 +50,10 @@
                 </div>
             </div>
         {:else}
-            Unauthorized
+            <div>
+                <div>Unauthorized</div>
+                <div>Redirect to login page...</div>
+            </div>
         {/if}
     </div>
 </div>

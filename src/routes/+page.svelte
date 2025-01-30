@@ -3,6 +3,7 @@
     import Home from "$lib/Home.svelte";
     import TopLeftImage from "$lib/TopLeftImage.svelte";
     import {goto} from "$app/navigation";
+    import {onMount} from "svelte";
     let emailValue = $state();
     let passwordValue = $state();
 
@@ -15,6 +16,10 @@
     let isLogin=$state(true);
 
     function login(){
+        console.log({
+            "email": emailValue,
+            "password": passwordValue,
+        });
         fetch("http://localhost:5000/login", {
             method: "POST",
             headers: {'Content-Type': 'application/json'},
@@ -66,6 +71,12 @@
             alert("Unable to Register");
         })
     }
+    onMount(()=>{
+        // if(localStorage.getItem("userType")){
+        //     console.log(localStorage.getItem("userType"));
+        //     goto("/home");
+        // }
+    })
 </script>
 
 <div>
