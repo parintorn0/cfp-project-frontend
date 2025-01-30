@@ -26,7 +26,9 @@ export const save = () => {
             alert("Saved");
         }
         else{
-            alert(res.error);
+            res.json().then(data=>{
+                alert(data.message);
+            })
         }
     })
 }
