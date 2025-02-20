@@ -2,10 +2,10 @@ import {assets, incomes, liabilities, expenses, goals} from "$lib/CFP/store.js";
 import {get} from "svelte/store";
 import {page} from "$app/state";
 import {fetchData} from "$lib/CFP/fetchdata.js";
-import {goto, invalidateAll} from "$app/navigation";
+import {goto} from "$app/navigation";
 
 export const save = () => {
-    fetch('http://localhost:5000/save',{
+    fetch(`${import.meta.env.VITE_SERVER_HOST}/save`,{
         method: 'POST',
         headers: {
             "Content-Type": "application/json",
@@ -37,7 +37,7 @@ export const saveAs = () => {
     // incomes
     // expenses
     // goals
-    fetch('http://localhost:5000/save_as',{
+    fetch(`${import.meta.env.VITE_SERVER_HOST}/save_as`,{
         method: 'POST',
         headers: {
             "Content-Type": "application/json",

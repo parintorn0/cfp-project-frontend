@@ -23,7 +23,7 @@
         formData.append("tag3", tags[2])
         formData.append("tag4", tags[3])
         formData.append("tag5", tags[4])
-        fetch('http://localhost:5000/upload_blog', {
+        fetch(`${import.meta.env.VITE_SERVER_HOST}/upload_blog`, {
             method: 'POST',
             body: formData,
         }).then((res)=>{

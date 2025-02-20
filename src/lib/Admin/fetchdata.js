@@ -5,7 +5,7 @@ export const fetchData = () => {
     customerList.set([])
     cfpList.set([])
     cfpCustomerList.set(null)
-    fetch('http://localhost:5000/admin/receive_customer', {
+    fetch(`${import.meta.env.VITE_SERVER_HOST}/admin/receive_customer`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -28,7 +28,7 @@ export const fetchData = () => {
             })
         });
     })
-    fetch('http://localhost:5000/admin/cfp_list', {
+    fetch(`${import.meta.env.VITE_SERVER_HOST}/cfp_list`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ export const fetchData = () => {
         });
     })
     // customer-list
-    fetch("http://localhost:5000/admin/cfp/receive_customer", {
+    fetch(`${import.meta.env.VITE_SERVER_HOST}/receive_customer`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

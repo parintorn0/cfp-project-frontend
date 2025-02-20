@@ -1,7 +1,5 @@
 <script>
     import {base} from "$app/paths";
-    import {onMount} from "svelte";
-    import {goto} from "$app/navigation";
     const {style, onClick} = $props()
     let blogs = $state([])
     let user_type = $state(null)

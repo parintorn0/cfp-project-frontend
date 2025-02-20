@@ -4,7 +4,6 @@
     import TopLeftImage from "$lib/TopLeftImage.svelte";
     import {goto} from "$app/navigation";
     import {onMount} from "svelte";
-    import TopRight from "$lib/TopRight.svelte";
     let emailValue = $state();
     let passwordValue = $state();
 
@@ -21,7 +20,7 @@
             "email": emailValue,
             "password": passwordValue,
         });
-        fetch("http://localhost:5000/login", {
+        fetch(`${import.meta.env.VITE_SERVER_HOST}/login`, {
             method: "POST",
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -52,7 +51,7 @@
     }
 
     function register(){
-        fetch("http://localhost:5000/register", {
+        fetch(`${import.meta.env.VITE_SERVER_HOST}/register`, {
             method: "POST",
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({

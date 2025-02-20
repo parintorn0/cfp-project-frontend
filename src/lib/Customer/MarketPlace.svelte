@@ -9,10 +9,10 @@
     let stringFind=$state('');
     onMount(()=>{
         cfps=[]
-        fetch("http://localhost:5000/getall_cfp").then((res)=> {
+        fetch(`${import.meta.env.VITE_SERVER_HOST}/getall_cfp`).then((res)=> {
             res.json().then(data=> {
                 data.forEach(item => {
-                    fetch("http://localhost:5000/get_cfp_image",{
+                    fetch(`${import.meta.env.VITE_SERVER_HOST}/get_cfp_image`,{
                         method:"POST",
                         headers: {
                             "Content-Type": "application/json",

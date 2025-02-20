@@ -3,10 +3,6 @@
     import {onMount} from "svelte";
     import { assets, liabilities, incomes, expenses, goals } from "$lib/CFP/store.js";
 
-    onMount(()=>{
-
-    })
-
     function addPort(){
         goals.update(value=>{
             value['portfolio'].push({

@@ -4,7 +4,7 @@
     import {page} from "$app/state";
     let blogData = $state(null)
     const fetchData = () => {
-        fetch("http://localhost:5000/get_blog",{
+        fetch(`${import.meta.env.VITE_SERVER_HOST}/get_blog`,{
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -15,7 +15,7 @@
             })
         }).then(res=>{
             res.json().then(data=>{
-                fetch("http://localhost:5000/get_blog_image", {
+                fetch(`${import.meta.env.VITE_SERVER_HOST}/get_blog_image`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -25,7 +25,7 @@
                     })
                 }).then(res2=>{
                     res2.blob().then(image=>{
-                        fetch("http://localhost:5000/get_blog_pdf", {
+                        fetch(`${import.meta.env.VITE_SERVER_HOST}/get_blog_pdf`, {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json"
@@ -35,7 +35,7 @@
                             })
                         }).then(res3=>{
                             res3.blob().then(pdf=>{
-                                fetch("http://localhost:5000/get_cfp_image", {
+                                fetch(`${import.meta.env.VITE_SERVER_HOST}/get_cfp_image`, {
                                     method: "POST",
                                     headers: {
                                         "Content-Type": "application/json"
@@ -78,7 +78,7 @@
         fetchData();
     })
     const like = () => {
-        fetch("http://localhost:5000/like_blog",{
+        fetch(`${import.meta.env.VITE_SERVER_HOST}/like_blog`,{
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -32,7 +32,7 @@ export const fetchData = () => {
         reqJson['cfp_id'] = page.params.cfp_id
     }
     // customer-list
-    fetch("http://localhost:5000/receive_customer", {
+    fetch(`${import.meta.env.VITE_SERVER_HOST}/receive_customer`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -58,7 +58,7 @@ export const fetchData = () => {
     })
     if(page.params.version_id) {
         // assets
-        fetch("http://localhost:5000/customer_asset", {
+        fetch(`${import.meta.env.VITE_SERVER_HOST}/customer_asset`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -84,7 +84,7 @@ export const fetchData = () => {
             console.error(err);
         })
         // liabilities
-        fetch("http://localhost:5000/customer_liability", {
+        fetch(`${import.meta.env.VITE_SERVER_HOST}/customer_liability`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -112,7 +112,7 @@ export const fetchData = () => {
             console.error(err);
         })
         // incomes
-        fetch("http://localhost:5000/customer_income", {
+        fetch(`${import.meta.env.VITE_SERVER_HOST}/customer_income`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -137,7 +137,7 @@ export const fetchData = () => {
             console.error(err);
         })
         // expenses
-        fetch("http://localhost:5000/customer_expense", {
+        fetch(`${import.meta.env.VITE_SERVER_HOST}/customer_expense`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -161,7 +161,7 @@ export const fetchData = () => {
             console.error(err);
         })
         // goals
-        fetch("http://localhost:5000/customer_goal", {
+        fetch(`${import.meta.env.VITE_SERVER_HOST}/customer_goal`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

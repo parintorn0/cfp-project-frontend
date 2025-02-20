@@ -13,10 +13,10 @@
     onMount(()=>{
         blogs=[]
         const unFilterTags = []
-        fetch("http://localhost:5000/getall_blog").then((res)=> {
+        fetch(`${import.meta.env.VITE_SERVER_HOST}/getall_blog`).then((res)=> {
             res.json().then(data=> {
                 data.forEach(item => {
-                    fetch("http://localhost:5000/get_blog_image",{
+                    fetch(`${import.meta.env.VITE_SERVER_HOST}/get_blog_image`,{
                         method:"POST",
                         headers: {
                             "Content-Type": "application/json",

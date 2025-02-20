@@ -6,7 +6,7 @@
     let user_type = $state(null)
     let cfpInfo = $state(null)
     const fetchData = ()=>{
-        fetch("http://localhost:5000/get_cfp", {
+        fetch(`${import.meta.env.VITE_SERVER_HOST}/get_cfp`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

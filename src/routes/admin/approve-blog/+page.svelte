@@ -8,7 +8,7 @@
     let blogs = $state([])
     const fetchData = () => {
         blogs = []
-        fetch("http://localhost:5000/admin/getall_blog",{
+        fetch(`${import.meta.env.VITE_SERVER_HOST}/getall_blog`,{
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
