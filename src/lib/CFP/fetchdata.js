@@ -25,13 +25,19 @@ export const fetchData = () => {
         },
         'portfolio': [],
     })
+    let reqJson = {
+        user_id: localStorage.getItem("userId"),
+    }
+    if (page.params.cfp_id){
+        reqJson['cfp_id'] = page.params.cfp_id
+    }
     // customer-list
     fetch("http://localhost:5000/receive_customer", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({user_id: localStorage.getItem("userId")}),
+        body: JSON.stringify(reqJson),
     }).then(res=>{
         res.json().then((data)=>{
             data.forEach((item)=>{

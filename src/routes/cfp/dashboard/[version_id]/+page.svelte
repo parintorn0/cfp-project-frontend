@@ -3,6 +3,9 @@
     import {fetchData} from "$lib/CFP/fetchdata.js";
     import {assets, expenses, incomes, liabilities} from "$lib/CFP/store.js";
     import Chart, {registerables} from 'chart.js/auto';
+    import DashboardTable from "$lib/CFP/DashboardTable.svelte";
+    import DashboardRetirement from "$lib/CFP/DashboardRetirement.svelte";
+    import DashboardGoal from "$lib/CFP/DashboardGoal.svelte";
     let assetInstance;
     let liabilityInstance;
     let incomeInstance;
@@ -57,7 +60,7 @@
     })
     assets.subscribe((value)=>{
         const assetNames=value.map(asset=>{
-            return asset.name;
+            return asset.type;
         })
         const assetAmounts=value.map(asset=>{
             return asset.amount;
@@ -77,7 +80,7 @@
     })
     incomes.subscribe((value)=>{
         const incomesNames=value.map(income=>{
-            return income.name;
+            return income.type;
         });
         const incomesAmounts=value.map(income=>{
             return income.amount;
@@ -155,12 +158,15 @@
     <div class="title">
         สุขภาพการเงิน
     </div>
+    <DashboardTable />
     <div class="title">
         วางแผนเกษียณ
     </div>
+    <DashboardRetirement />
     <div class="title">
         การวางแผนเป้าหมาย
     </div>
+    <DashboardGoal />
 </div>
 
 <style>

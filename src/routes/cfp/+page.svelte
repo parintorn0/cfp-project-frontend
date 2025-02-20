@@ -7,7 +7,6 @@
     let selected = $state([])
     onMount(()=>{
         $customerList.forEach(customer=>{
-            console.log(customer.versions_info[0].version_num)
             selected.push(customer.versions_info[0].version_num)
         })
     })
@@ -20,7 +19,7 @@
     <tr>
         <td>ชื่อ</td>
         <td>เวอร์ชั่น</td>
-        <td>วันที่เริ่มปรึกษา</td>
+        <td>วันที่</td>
         <td>เบอร์โทร</td>
         <td></td>
     </tr>
