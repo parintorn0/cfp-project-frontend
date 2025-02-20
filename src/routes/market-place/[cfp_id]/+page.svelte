@@ -61,7 +61,7 @@
         fetchData()
     })
     const addRelation = ()=>{
-        fetch('http://localhost:5000/select_cfp', {
+        fetch(`${import.meta.env.VITE_SERVER_HOST}/select_cfp`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
