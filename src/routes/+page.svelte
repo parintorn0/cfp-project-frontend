@@ -29,14 +29,23 @@
                 "password": passwordValue,
             })
         }).then((res) => {
-            res.json().then(data=>{
-                alert("Login successful!");
-                localStorage.setItem("userType", data['user_type']);
-                localStorage.setItem("userId", data['user_id']);
-                window.location.href = '/home';
-            }).catch((err) => {
-                console.error(err);
-            })
+            if (res.status === 200){
+                res.json().then(data=>{
+                    alert(data.message);
+                    localStorage.setItem("userType", data['user_type']);
+                    localStorage.setItem("userId", data['user_id']);
+                    window.location.href = '/home';
+                }).catch((err) => {
+                    console.error(err);
+                })
+            }
+            else{
+                res.json().then(data=>{
+                    alert(data.message);
+                }).catch((err) => {
+                    console.error(err);
+                })
+            }
         }).catch((err) => {
             alert("Unable to Login");
         })
