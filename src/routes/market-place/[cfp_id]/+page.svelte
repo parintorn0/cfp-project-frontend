@@ -230,7 +230,7 @@
         width: 250px;
         height: 250px;
         top: 150px;
-        right: 1300px;
+        right: calc(85% - 100px);
         border-radius: 99999px;
         object-fit: cover;
     }
@@ -256,7 +256,7 @@
     }
     .title{
         padding: 25px 200px;
-        width: 1400px;
+        width: 85%;
         background: rgba(209, 146, 49, 0.68);
         display: flex;
         justify-content: flex-end;
