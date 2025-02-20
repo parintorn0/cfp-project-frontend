@@ -19,7 +19,7 @@
         }).then((res)=> {
             res.json().then(data=> {
                 data.forEach(item => {
-                    fetch("http://localhost:5000/get_blog_image",{
+                    fetch(`${import.meta.env.VITE_SERVER_HOST}/get_blog_image`,{
                         method:"POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -60,7 +60,7 @@
             approvalPath = '/admin/approve_blog'
         else
             approvalPath = '/admin/decline_blog'
-        fetch("http://localhost:5000"+approvalPath,{
+        fetch(`${import.meta.env.VITE_SERVER_HOST}/${approvalPath}`,{
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
