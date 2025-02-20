@@ -73,8 +73,6 @@
                         <div class="red">ใส่เป็นตัวเลข</div>
                     </div>
                 </div>
-            </div>
-            <div class="input-col">
                 <div class="input-field">
                     ระยะ (สั้น/ยาว)
                     <select name="" id="" bind:value={liability.term}>
