@@ -28,7 +28,7 @@ export const fetchData = () => {
             })
         });
     })
-    fetch(`${import.meta.env.VITE_SERVER_HOST}/cfp_list`, {
+    fetch(`${import.meta.env.VITE_SERVER_HOST}/admin/cfp_list`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
