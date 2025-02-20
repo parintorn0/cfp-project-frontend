@@ -16,7 +16,7 @@
             })
         }).then(res=>{
             res.json().then(data=>{
-                fetch('http://localhost:5000/get_cfp_image',{
+                fetch(`${import.meta.env.VITE_SERVER_HOST}/get_cfp_image`,{
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
