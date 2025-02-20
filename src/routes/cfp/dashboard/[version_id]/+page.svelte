@@ -118,55 +118,65 @@
 </script>
 
 <div class="layout">
-    <div class="title">
-        ภาพรวม
-    </div>
-    <div class="contents">
-        <div class="content {$assets.length>0?'':'hidden'}">
-            <div>
-                <canvas id="assetCanvas"></canvas>
-            </div>
-            <div class="header">
-                ทรัพสินย์
+    <div class="group">
+        <div class="title">
+            ภาพรวม
+        </div>
+        <div>
+            <div class="contents">
+                <div class="content {$assets.length>0?'':'hidden'}">
+                    <div>
+                        <canvas id="assetCanvas"></canvas>
+                    </div>
+                    <div class="header">
+                        ทรัพสินย์
+                    </div>
+                </div>
+                <div class="content {$liabilities.length>0?'':'hidden'}">
+                    <div>
+                        <canvas id="liabilitiesCanvas"></canvas>
+                    </div>
+                    <div class="header">
+                        หนี้สิน
+                    </div>
+                </div>
+                <div class="content {$incomes.length>0?'':'hidden'}">
+                    <div>
+                        <canvas id="incomeCanvas"></canvas>
+                    </div>
+                    <div class="header">
+                        รายได้
+                    </div>
+                </div>
+                <div class="content {$expenses.length>0?'':'hidden'}">
+                    <div>
+                        <canvas id="expenseCanvas"></canvas>
+                    </div>
+                    <div class="header">
+                        รายจ่าย
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="content {$liabilities.length>0?'':'hidden'}">
-            <div>
-                <canvas id="liabilitiesCanvas"></canvas>
-            </div>
-            <div class="header">
-                หนี้สิน
-            </div>
+    </div>
+    <div class="group">
+        <div class="title">
+            สุขภาพการเงิน
         </div>
-        <div class="content {$incomes.length>0?'':'hidden'}">
-            <div>
-                <canvas id="incomeCanvas"></canvas>
-            </div>
-            <div class="header">
-                รายได้
-            </div>
+        <DashboardTable />
+    </div>
+    <div class="group">
+        <div class="title">
+            วางแผนเกษียณ
         </div>
-        <div class="content {$expenses.length>0?'':'hidden'}">
-            <div>
-                <canvas id="expenseCanvas"></canvas>
-            </div>
-            <div class="header">
-                รายจ่าย
-            </div>
+        <DashboardRetirement />
+    </div>
+    <div class="group">
+        <div class="title">
+            การวางแผนเป้าหมาย
         </div>
+        <DashboardGoal />
     </div>
-    <div class="title">
-        สุขภาพการเงิน
-    </div>
-    <DashboardTable />
-    <div class="title">
-        วางแผนเกษียณ
-    </div>
-    <DashboardRetirement />
-    <div class="title">
-        การวางแผนเป้าหมาย
-    </div>
-    <DashboardGoal />
 </div>
 
 <style>
@@ -175,13 +185,19 @@
         position: absolute;
         z-index: -1;
     }
+    .group{
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        width: 100%;
+    }
     .layout{
         padding: 0 50px;
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 50px;
+        gap: 100px;
     }
     .title{
         width: 400px;
