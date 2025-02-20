@@ -21,6 +21,9 @@
         })
     }
     const name="พอร์ต"
+    goals.subscribe((va)=>{
+        console.log(va)
+    })
 </script>
 
 <div class="liability-type">

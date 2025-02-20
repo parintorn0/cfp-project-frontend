@@ -32,7 +32,7 @@
             {
                 "name": "สภาพคล่องพื้นฐาน",
                 "value": (essentialCashflow > 0 ? totalLiquidAssets / essentialCashflow : 0).toFixed(2),
-                "valueStatus": (essentialCashflow > 0 ? totalLiquidAssets / essentialCashflow : 0)<3?less : (essentialCashflow > 0 ? totalLiquidAssets / essentialCashflow : 0)>6?more:pass
+                "valueStatus": (essentialCashflow > 0 ? totalLiquidAssets / essentialCashflow : 0)<3?less:pass
             },
             {
                 "name": "สภาพคล่องต่อความมั่งคั่งสุทธิ",

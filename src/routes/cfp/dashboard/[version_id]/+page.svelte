@@ -1,7 +1,7 @@
 <script>
     import {onMount} from "svelte";
     import {fetchData} from "$lib/CFP/fetchdata.js";
-    import {assets, expenses, incomes, liabilities} from "$lib/CFP/store.js";
+    import {assets, expenses, goals, incomes, liabilities} from "$lib/CFP/store.js";
     import Chart, {registerables} from 'chart.js/auto';
     import DashboardTable from "$lib/CFP/DashboardTable.svelte";
     import DashboardRetirement from "$lib/CFP/DashboardRetirement.svelte";
@@ -10,6 +10,17 @@
     let liabilityInstance;
     let incomeInstance;
     let expenseInstance;
+    
+    const unique  =(labels, data)=>{
+        let dataMap = {};
+        labels.forEach((label, index) => {
+            dataMap[label] = (parseFloat(dataMap[label]) || 0) + parseFloat(data[index]);
+        });
+        return {
+            labels: Object.keys(dataMap),
+            data: Object.values(dataMap),
+        }
+    }
     onMount(()=>{
         fetchData();
         Chart.register(...registerables); // Register all Chart.js plugins
@@ -65,8 +76,10 @@
         const assetAmounts=value.map(asset=>{
             return asset.amount;
         })
+        const data = unique(assetNames, assetAmounts)
+        console.log(data)
         if (value.length>0)
-            updateChart(assetInstance, assetNames, assetAmounts);
+            updateChart(assetInstance, data['labels'], data['data']);
     })
     liabilities.subscribe((value)=>{
         const liabilitiesNames=value.map(liability=>{
@@ -75,8 +88,9 @@
         const liabilitiesAmounts=value.map(liability=>{
             return liability.amount;
         })
+        const data = unique(liabilitiesNames, liabilitiesAmounts)
         if (value.length>0)
-            updateChart(liabilityInstance, liabilitiesNames, liabilitiesAmounts);
+            updateChart(liabilityInstance, data['labels'], data['data']);
     })
     incomes.subscribe((value)=>{
         const incomesNames=value.map(income=>{
@@ -85,8 +99,9 @@
         const incomesAmounts=value.map(income=>{
             return income.amount;
         });
+        const data = unique(incomesNames, incomesAmounts)
         if (value.length>0)
-            updateChart(incomeInstance, incomesNames, incomesAmounts);
+            updateChart(incomeInstance, data['labels'], data['data']);
     })
     expenses.subscribe((value)=>{
         const expensesNames=value.map(expense=>{
@@ -95,8 +110,9 @@
         const expensesAmounts=value.map(expense=>{
             return expense.amount;
         });
+        const data = unique(expensesNames, expensesAmounts)
         if (value.length>0)
-            updateChart(expenseInstance, expensesNames, expensesAmounts);
+            updateChart(expenseInstance, data['labels'], data['data']);
     })
     function updateChart(chartInstance, labels, data) {
         if (chartInstance) {
@@ -118,7 +134,7 @@
 </script>
 
 <div class="layout">
-    <div class="group">
+    <div class="group {$assets.length>0&&$liabilities.length&&$incomes.length&&$expenses.length?'':'hidden'}">
         <div class="title">
             ภาพรวม
         </div>
@@ -165,13 +181,13 @@
         </div>
         <DashboardTable />
     </div>
-    <div class="group">
+    <div class="group {$goals['retirement'] ?'':'hidden'}">
         <div class="title">
             วางแผนเกษียณ
         </div>
         <DashboardRetirement />
     </div>
-    <div class="group">
+    <div class="group {$goals['goal'].length>0 ?'':'hidden'}">
         <div class="title">
             การวางแผนเป้าหมาย
         </div>

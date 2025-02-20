@@ -12,8 +12,8 @@
         const currentAge = parseFloat(retireGroup['age']);
         const retirementAge = parseFloat(retireGroup['retirementage']);
         const lifeExpectancy = parseFloat(retireGroup['deadage']);
-
-        const adjustedReturn = ((1 + expectedReturn) / (1 + inflationRate)) - 1;
+        
+        const adjustedReturn = ((1 + expectedReturn) / (1 + inflationRate)) - 1
         const annualExpensesAtRetirement = currentAnnualExpenses * Math.pow((1 + inflationRate), (retirementAge - currentAge));
         function pvOfAnnuity(rate, nper, pmt) {
             console.log((1 - Math.pow(1 + rate, -nper)) / rate);
