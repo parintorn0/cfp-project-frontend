@@ -28,7 +28,7 @@ import TopRight from "$lib/TopRight.svelte";
             height: 100vh;
             width: 100vw;
         }
-        input[type='text'], input[type='password'], select{
+        input[type='text'], input[type='password'], input[type='date'], select{
             background: none;
             font-size: 16px;
             border-radius: 5px;
