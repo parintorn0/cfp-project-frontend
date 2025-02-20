@@ -1,11 +1,8 @@
 <script>
     import {page} from "$app/state";
-    import {assets, customerList, expenses, goals, incomes, liabilities} from "$lib/CFP/store.js";
     import {onMount} from "svelte";
     import TopLeftImage from "$lib/TopLeftImage.svelte";
     import {goto} from "$app/navigation";
-    import {fetchData} from "$lib/CFP/fetchdata.js";
-    import TopRight from "$lib/TopRight.svelte";
 
     let { children } = $props()
 
@@ -13,14 +10,11 @@
 
     onMount(()=>{
         userType = localStorage.getItem("userType")
-        fetchData();
     })
 </script>
 
-{#if userType === "F" || userType === "A"}
-    <TopLeftImage style="position:absolute;" version={page.params.version_id} onClick={()=>{
-        goto('/home')
-    }}/>
+{#if userType === "A"}
+    <TopLeftImage style="position:absolute;" version={page.params.version_id} onClick={()=>{goto('/home')}}/>
     <div class="layout">
         {@render children()}
         <div style="padding:50px;">

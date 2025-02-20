@@ -1,4 +1,9 @@
+<script>
+import TopRight from "$lib/TopRight.svelte";
+</script>
+
 <div>
+    <TopRight/>
     <slot />
 </div>
 

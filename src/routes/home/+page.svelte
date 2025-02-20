@@ -16,20 +16,20 @@
 <div>
     <div class="layout">
         {#if user_type==='C'}
-            <TopLeftImage onClick={()=>{goto('/')}}/>
+            <TopLeftImage onClick={()=>{goto('/home')}}/>
             <Home haveBtn/>
         {:else if user_type==='A'}
             <Home/>
             <div class="admin-section">
                 <img src="Icon.png" alt="">
                 <div class="button-group">
-                    <Button class="login-btn" color={{r: 186, g: 141, b: 72, a: 0.39}}>
+                    <Button class="login-btn" color={{r: 186, g: 141, b: 72, a: 0.39}} onClick={()=>{goto('/admin/approve-blog')}}>
                         <div class="w-full">Approve Blog</div>
                     </Button>
-                    <Button class="login-btn" color={{r: 186, g: 141, b: 72, a: 0.39}} onClick={()=>{}}>
+                    <Button class="login-btn" color={{r: 186, g: 141, b: 72, a: 0.39}} onClick={()=>{goto('/admin/cfp-list')}}>
                         <div class="w-full">ตรวจสอบการทำงานของนักวางแผน</div>
                     </Button>
-                    <Button class="login-btn" color={{r: 186, g: 141, b: 72, a: 0.39}} onClick={()=>{}}>
+                    <Button class="login-btn" color={{r: 186, g: 141, b: 72, a: 0.39}} onClick={()=>{goto('/admin/customer-list')}}>
                         <div class="w-full">ตรวจสอบข้อมูลลูกค้า</div>
                     </Button>
                 </div>
@@ -44,7 +44,9 @@
                     }}>
                         <div class="w-full">ดูลูกค้า</div>
                     </Button>
-                    <Button class="login-btn" color={{r: 186, g: 141, b: 72, a: 0.39}} onClick={()=>{}}>
+                    <Button class="login-btn" color={{r: 186, g: 141, b: 72, a: 0.39}} onClick={()=>{
+                        window.location.href = '/cfp/add-blog';
+                    }}>
                         <div class="w-full">เขียนบทความ</div>
                     </Button>
                 </div>

@@ -4,6 +4,7 @@
     import TopLeftImage from "$lib/TopLeftImage.svelte";
     import {goto} from "$app/navigation";
     import {onMount} from "svelte";
+    import TopRight from "$lib/TopRight.svelte";
     let emailValue = $state();
     let passwordValue = $state();
 
@@ -29,7 +30,6 @@
             })
         }).then((res) => {
             res.json().then(data=>{
-                console.log(data);
                 alert("Login successful!");
                 localStorage.setItem("userType", data['user_type']);
                 localStorage.setItem("userId", data['user_id']);
@@ -43,13 +43,6 @@
     }
 
     function register(){
-        console.log({
-            "email": registerEmailValue,
-            "password": registerPasswordValue,
-            "name": registerFirstNameValue,
-            "surname": registerLastNameValue,
-            "telephone": registerPhoneValue,
-        })
         fetch("http://localhost:5000/register", {
             method: "POST",
             headers: {'Content-Type': 'application/json'},
@@ -72,10 +65,9 @@
         })
     }
     onMount(()=>{
-        // if(localStorage.getItem("userType")){
-        //     console.log(localStorage.getItem("userType"));
-        //     goto("/home");
-        // }
+        if(localStorage.getItem("userType") && localStorage.getItem("userType")){
+            goto("/home");
+        }
     })
 </script>
 

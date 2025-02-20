@@ -1,6 +1,8 @@
 import {assets, incomes, liabilities, expenses, goals} from "$lib/CFP/store.js";
 import {get} from "svelte/store";
 import {page} from "$app/state";
+import {fetchData} from "$lib/CFP/fetchdata.js";
+import {goto, invalidateAll} from "$app/navigation";
 
 export const save = () => {
     // assets
@@ -24,6 +26,8 @@ export const save = () => {
     }).then(res =>{
         if(res.ok){
             alert("Saved");
+            fetchData();
+            goto('/cfp').then(_ => {})
         }
         else{
             res.json().then(data=>{

@@ -1,47 +1,36 @@
 import {writable} from "svelte/store";
 
-export const customerList = writable([])
+export const customerList = writable([]);
 
 export const assets = writable([]);
 export const liabilities = writable([]);
 export const incomes = writable([]);
 export const expenses = writable([]);
 export const goals = writable({
-    'goal': [],
+    'goal': {
+        "amount": "",
+        "name": "",
+        "year": "",
+        "cashflow": "",
+        "growthrate": "",
+    },
     'retirement': {
         'age': '',
         'retirementage': '',
         'deadage': '',
         'inflation': '',
-    }
+        'expense': '',
+        'rate': '',
+    },
+    'portfolio': [],
 });
 
-// customerList.subscribe(customer => {
-//     console.log(customer);
-// })
-assets.subscribe(asset => {
-    console.log(asset);
-})
-// liabilities.subscribe(liability => {
-//     console.log(liability);
-// })
-// incomes.subscribe(income => {
-//     console.log(income);
-// })
-// expenses.subscribe(expense => {
-//     console.log(expense);
-// })
-goals.subscribe(goal => {
-    if(goal['retirement']===null){
-        goals.update(value=>{
-            value['retirement'] = {
-                'age': '',
-                'retirementage': '',
-                'deadage': '',
-                'inflation': '',
-            };
-            return value;
-        });
-    }
-    console.log(goal);
-})
+const assetsData = writable({
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    datasets: [{
+        label: 'My First dataset',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [0, 10, 5, 2, 20, 30, 45],
+    }]
+});

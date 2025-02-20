@@ -3,9 +3,9 @@
     import Navigator from "$lib/CFP/Navigator.svelte";
     import { page } from "$app/state"
     import Goal from "$lib/CFP/Goal.svelte";
+    import {goto} from "$app/navigation";
 </script>
 
-<TopLeftImage style="position: absolute" version={page.params.version_id}/>
 <Navigator selectedIndex={4}/>
 <Goal></Goal>
 
