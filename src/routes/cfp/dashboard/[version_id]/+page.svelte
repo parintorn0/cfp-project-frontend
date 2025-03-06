@@ -187,7 +187,7 @@
         </div>
         <DashboardRetirement />
     </div>
-    <div class="group {$goals['goal'].length>0 ?'':'hidden'}">
+    <div class="group {$goals['portfolio'].length>0 ?'':'hidden'}">
         <div class="title">
             การวางแผนเป้าหมาย
         </div>
